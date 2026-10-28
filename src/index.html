@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111827">
+  <title>DecentraBank | Smart Banking</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.10.4/dist/web3.min.js"></script>
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="#overview">
+      <span class="brand-mark"><i></i><i></i><i></i></span>
+      <span class="brand-copy"><strong>Decentra<span>Bank</span></strong><small>SMART BANKING</small></span>
+    </a>
+    <div class="side-label">WORKSPACE</div>
+    <nav class="side-nav" aria-label="Main navigation">
+      <a class="nav-link active" href="#overview"><span class="nav-icon">▦</span> Overview</a>
+      <a class="nav-link" href="#account-section"><span class="nav-icon">◉</span> My account</a>
+      <a class="nav-link" href="#services"><span class="nav-icon">⇄</span> Banking services</a>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="network-card"><span class="network-dot"></span><div><strong>Local blockchain</strong><small>Ganache network</small></div></div>
+      <div class="sidebar-note"><span class="shield-icon">✦</span><p><strong>Your money, your control.</strong><br><span>Powered by smart contracts.</span></p></div>
+      <div class="sidebar-footer">DECENTRABANK <span>•</span> EDUCATIONAL DAPP</div>
+    </div>
+  </aside>
+
+  <main class="main-content" id="overview">
+    <header class="topbar">
+      <button class="mobile-menu" id="mobileMenu" aria-label="Toggle navigation">☰</button>
+      <div class="breadcrumb"><span>Workspace</span><span class="crumb-sep">/</span><strong>Overview</strong></div>
+      <div class="topbar-right">
+        <div class="network-pill"><span class="network-dot"></span> Ganache</div>
+        <div class="wallet-chip"><span class="wallet-avatar">◈</span><div><strong id="connectionStatus">Wallet Disconnected</strong><small id="walletAddress">Connect MetaMask to continue</small></div></div>
+        <button id="connectWallet" class="button button-primary connect-button">Connect wallet</button>
+      </div>
+    </header>
+
+    <div class="page-wrap">
+      <section class="page-heading">
+        <div><div class="eyebrow"><span class="eyebrow-line"></span> YOUR FINANCIAL SPACE</div><h1>Good to see you<span class="heading-period">.</span></h1><p>Manage your digital funds with clarity and confidence.</p></div>
+        <div class="date-chip"><span>✧</span> Blockchain banking, simplified</div>
+      </section>
+
+      <section class="hero-grid" aria-label="Account overview">
+        <article class="balance-panel">
+          <div class="balance-panel-top"><div><span class="panel-overline">TOTAL BANK BALANCE</span><span class="balance-help">Your current internal balance</span></div><div class="eth-token">Ξ</div></div>
+          <div class="balance-amount"><span id="balance">0.0000</span><span class="currency">ETH</span></div>
+          <div class="balance-panel-bottom"><span class="balance-status"><span class="status-pulse"></span> Smart contract balance</span><button id="refreshBalance" class="button button-glass"><span class="refresh-symbol">↻</span> Refresh balance</button></div>
+          <div class="hero-decoration hero-decoration-one"></div><div class="hero-decoration hero-decoration-two"></div>
+        </article>
+        <article class="quick-summary card">
+          <div class="card-heading"><div><span class="eyebrow">ACCOUNT SNAPSHOT</span><h2>At a glance</h2></div><span class="snapshot-icon">◈</span></div>
+          <div class="snapshot-row"><span class="snapshot-symbol violet">◎</span><div class="snapshot-copy"><span>Account status</span><strong id="summaryAccountStatus">Not checked</strong></div><span class="mini-indicator" id="summaryStatusDot"></span></div>
+          <div class="snapshot-row"><span class="snapshot-symbol mint">Ξ</span><div class="snapshot-copy"><span>Asset</span><strong>Ethereum (ETH)</strong></div></div>
+          <div class="snapshot-row"><span class="snapshot-symbol amber">⌁</span><div class="snapshot-copy"><span>Network</span><strong>Ganache local chain</strong></div></div>
+          <button id="checkAccount" class="text-button">Get account information <span>→</span></button>
+        </article>
+      </section>
+
+      <section class="section-block" id="account-section">
+        <div class="section-heading-row"><div><div class="eyebrow">ACCOUNT DETAILS</div><h2>Your bank account</h2><p>Wallet and smart-contract account information.</p></div><span class="section-count">01 <small>/ ACCOUNT</small></span></div>
+        <article class="card account-card">
+          <div class="account-card-top"><div class="account-profile"><div class="profile-avatar">◈</div><div><h3>Personal blockchain account</h3><p>Linked to your currently selected MetaMask wallet</p></div></div><span class="status-badge" id="accountStatusBadge"><i></i><span id="accountStatus">Not connected</span></span></div>
+          <div class="account-info-grid">
+            <div class="info-tile address-tile"><span class="info-label">WALLET ADDRESS</span><strong id="accountAddress">Not connected</strong><span class="info-caption">Active MetaMask address</span></div>
+            <div class="info-tile"><span class="info-label">INTERNAL BALANCE</span><strong class="info-balance"><span id="accountBalance">0.0000</span> <small>ETH</small></strong><span class="info-caption">Recorded by the Bank smart contract</span></div>
+          </div>
+        </article>
+      </section>
+
+      <section class="section-block" id="services">
+        <div class="section-heading-row"><div><div class="eyebrow">BANKING TOOLS</div><h2>What would you like to do?</h2><p>Choose an action to manage your internal bank balance.</p></div><span class="section-count">02 <small>/ SERVICES</small></span></div>
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-card-top"><div class="service-icon icon-violet">＋</div><span class="service-index">01</span></div>
+            <h3>Create an account</h3><p>Register your connected wallet with the DecentraBank smart contract.</p>
+            <div class="service-bottom"><span class="service-tag">ONE-TIME SETUP</span><button id="createAccount" class="button button-outline">Create account <span>→</span></button></div>
+          </article>
+          <article class="service-card">
+            <div class="service-card-top"><div class="service-icon icon-green">↓</div><span class="service-index">02</span></div>
+            <h3>Deposit ETH</h3><p>Add ETH to your internal bank balance from your connected wallet.</p>
+            <label for="depositAmount">Amount to deposit <span>(ETH)</span></label><div class="input-wrap"><span>Ξ</span><input type="number" id="depositAmount" min="0" step="any" placeholder="0.00" inputmode="decimal"></div>
+            <button id="deposit" class="button button-primary service-action">Deposit funds <span>↗</span></button>
+          </article>
+          <article class="service-card">
+            <div class="service-card-top"><div class="service-icon icon-amber">↑</div><span class="service-index">03</span></div>
+            <h3>Withdraw ETH</h3><p>Move available funds from your internal balance back to your wallet.</p>
+            <label for="withdrawAmount">Amount to withdraw <span>(ETH)</span></label><div class="input-wrap"><span>Ξ</span><input type="number" id="withdrawAmount" min="0" step="any" placeholder="0.00" inputmode="decimal"></div>
+            <button id="withdraw" class="button button-primary service-action">Withdraw funds <span>↗</span></button>
+          </article>
+          <article class="service-card transfer-card">
+            <div class="service-card-top"><div class="service-icon icon-blue">⇄</div><span class="service-index">04</span></div>
+            <h3>Transfer funds</h3><p>Send internal bank balance to another wallet that has registered an account.</p>
+            <label for="toAddress">Recipient wallet address</label><input class="plain-input" type="text" id="toAddress" placeholder="0x..." autocomplete="off" spellcheck="false">
+            <label for="transferAmount">Amount to transfer <span>(ETH)</span></label><div class="input-wrap"><span>Ξ</span><input type="number" id="transferAmount" min="0" step="any" placeholder="0.00" inputmode="decimal"></div>
+            <button id="transfer" class="button button-primary service-action">Transfer funds <span>↗</span></button>
+          </article>
+        </div>
+      </section>
+
+      <section class="status-section">
+        <div class="status-leading"><div class="status-symbol" id="statusIcon">i</div><div><span class="eyebrow">LIVE FEEDBACK</span><h2 id="statusTitle">Ready when you are</h2><p id="statusText">Connect MetaMask and select your Ganache network to begin.</p></div></div>
+        <span class="live-label"><span></span> SESSION STATUS</span>
+      </section>
+      <footer class="page-footer"><div class="footer-brand"><span>◈</span> DecentraBank</div><span>Built for learning • Powered by Ethereum smart contracts</span><span class="footer-version">LOCAL DAPP</span></footer>
+    </div>
+  </main>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
